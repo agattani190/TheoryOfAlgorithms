@@ -1,1 +1,1 @@
-# TheoryOfAlgorithms
+This repository contains course materials and assignment solutions from the course: CS5114 - Theory Of Algorithms
