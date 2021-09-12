@@ -3,7 +3,7 @@
 using namespace std;
 
 // Time Complexity: O(v + e) -> v and e are number of nodes and edges
-// Space Complexity: O(v)
+// Space Complexity: O(v + e)
 bool isBipartite(vector<vector<int>> &graph) {
   queue<int> q;
   int size;
