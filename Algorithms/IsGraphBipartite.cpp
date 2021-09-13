@@ -6,8 +6,6 @@ using namespace std;
 // Space Complexity: O(v + e)
 bool isBipartite(vector<vector<int>> &graph) {
   queue<int> q;
-  int size;
-  int count;
   int curr;
   int n = graph.size();
 
@@ -22,22 +20,17 @@ bool isBipartite(vector<vector<int>> &graph) {
     if (visited[i]) {
       continue;
     }
-    count = 0;
     q.push(i);
     while (!q.empty()) {
-      size = q.size();
-      while (size--) {
-        curr = q.front();
-        q.pop();
-        if (!visited[curr]) {
-          visited[curr] = true;
-          level[curr] = count;
-          for (int i = 0; i < graph[curr].size(); i++) {
-            q.push(graph[curr][i]);
-          }
+      curr = q.front();
+      q.pop();
+      if (!visited[curr]) {
+        visited[curr] = true;
+        for (int i = 0; i < graph[curr].size(); i++) {
+          level[graph[curr][i]] = level[curr] + 1;
+          q.push(graph[curr][i]);
         }
       }
-      count++;
     }
   }
 
