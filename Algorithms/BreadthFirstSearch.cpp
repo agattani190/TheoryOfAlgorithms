@@ -7,10 +7,11 @@ using namespace std;
 vector<int> bfs(vector<vector<int>> &graph) {
   queue<int> q;
   int curr;
+  int index = 0;
   int n = graph.size();
 
-  // Store the level of each node after running the BFS algorithm
-  vector<int> level(n, 0);
+  // Store the BFS Ordering
+  vector<int> bfsTraversal(n, 0);
 
   // Store if the node has been already traversed or not
   vector<bool> visited(n, false);
@@ -22,17 +23,19 @@ vector<int> bfs(vector<vector<int>> &graph) {
       continue;
     }
     q.push(i);
+    visited[i] = true;
+
     while (!q.empty()) {
       curr = q.front();
       q.pop();
-      if (!visited[curr]) {
-        visited[curr] = true;
-        for (int i = 0; i < graph[curr].size(); i++) {
-          level[graph[curr][i]] = level[curr] + 1;
-          q.push(graph[curr][i]);
+      bfsTraversal[index++] = curr;
+      for (int j = 0; j < graph[curr].size(); j++) {
+        if (!visited[graph[curr][j]]) {
+          q.push(graph[curr][j]);
+          visited[graph[curr][j]] = true;
         }
       }
     }
   }
-  return level;
+  return bfsTraversal;
 }
