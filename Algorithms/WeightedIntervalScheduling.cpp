@@ -29,7 +29,11 @@ int weightedIntervalScheduling(vector<int> &startTime, vector<int> &endTime,
   vector<int> dp(n, 0);
   dp[n - 1] = intervals[n - 1].second;
   for (int i = n - 2; i >= 0; i--) {
+    // Either just have the current interval or don't have it at all
     dp[i] = max(intervals[i].second, dp[i + 1]);
+
+    // If we include the current interval, find the next valid interval
+    // compatible with the current interval using binary search
     nextValidIndex = lower_bound(startTime.begin() + i, startTime.end(),
                                  intervals[i].first.second) -
                      startTime.begin();
