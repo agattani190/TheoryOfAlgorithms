@@ -1,1 +1,1 @@
-This repository contains course materials and assignment solutions from the course: CS5114 - Theory Of Algorithms
+This repository contains implementations of the algorithms taught as part of the course: CS5114 - Theory Of Algorithms
